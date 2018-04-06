@@ -16,3 +16,7 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+
+Route.get('checkout', 'CheckoutController.render')
+
+Route.post('wxpay/notify', 'CheckoutController.wxPayNotify')
