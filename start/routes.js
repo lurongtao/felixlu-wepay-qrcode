@@ -20,3 +20,9 @@ Route.on('/').render('welcome')
 Route.get('checkout', 'CheckoutController.render')
 
 Route.post('wxpay/notify', 'CheckoutController.wxPayNotify')
+
+Route.post('checkout/pay', 'CheckoutController.pay')
+
+Route.get('checkout/completed', 'CheckoutController.completed')
+
+Route.post('checkout/query', 'CheckoutController.query')

@@ -9,7 +9,7 @@ module.exports = {
   // 商户号
   mch_id: Env.get('WXPAY_MCH_ID'),
 
-  // 秘钥
+  // 密钥
   key: Env.get('WXPAY_KEY'),
 
   // 通知地址
@@ -17,6 +17,7 @@ module.exports = {
 
   // 接口地址
   api: {
-    unifiedorder: 'https://api.mch.weixin.qq.com/pay/unifiedorder'
+    unifiedorder: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
+    orderquery: 'https://api.mch.weixin.qq.com/pay/orderquery'
   }
 }
