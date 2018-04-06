@@ -12,21 +12,21 @@ const qrcode       = use('qrcode')
 
 class CheckoutController {
   wxPaySign(data, key) {
-    // 1.排序
+    // 1. 排序
     const sortedOrder = Object.keys(data).sort().reduce((accumulator, key) => {
       accumulator[key] = data[key]
       return accumulator
     }, {})
 
-    // 2.转化为地址查询符
+    // 2. 转换成地址查询符
     const stringOrder = queryString.stringify(sortedOrder, null, null, {
       encodeURIComponent: queryString.unescape
     })
 
-    // 3.结尾加上秘钥
+    // 3. 结尾加上密钥
     const stringOrderWithKey = `${ stringOrder }&key=${ key }`
 
-    // 4.md5 后全部大写
+    // 4. md5 后全部大写
     const sign = crypto.createHash('md5').update(stringOrderWithKey).digest('hex').toUpperCase()
 
     return sign
@@ -93,6 +93,8 @@ class CheckoutController {
     })
 
     const wxPayResponse = await axios.post(unifiedOrderApi, xmlOrder)
+
+    logger.debug(wxPayResponse)
 
     const _prepay = convert.xml2js(wxPayResponse.data, {
       compact: true,
